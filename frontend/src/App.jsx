@@ -3,20 +3,24 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import LoginPage from './components/LoginPage';
 import CustomerDashboard from './components/CustomerDashboard';
 
-
 function App() {
-  const currentUser = null; 
+  const currentUser = null;
 
   return (
-    <Router>
+    <Router basename="/car-rental">
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/browse" element={
-            currentUser?.role === 'Standard' ? <CustomerDashboard /> : <Navigate to="/" />
-          } 
+        <Route
+          path="/browse"
+          element={
+            currentUser?.role === 'Standard'
+              ? <CustomerDashboard />
+              : <Navigate to="/" />
+          }
         />
       </Routes>
     </Router>
   );
 }
+
 export default App;
